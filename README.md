@@ -1,4 +1,4 @@
-ALA CAS Services Management
+ALA CAS Services Management [![Build Status](https://travis-ci.org/AtlasOfLivingAustralia/ala-cas-5-services.svg?branch=master)](https://travis-ci.org/AtlasOfLivingAustralia/ala-cas-5-services)
 ============================
 
 ALA CAS Services management web application.
