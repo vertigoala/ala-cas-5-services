@@ -1,0 +1,64 @@
+---
+info:
+  scm-url: "@scm.url@"
+  build-url: "http://travis-ci.org/@env.TRAVIS_REPO_SLUG@/builds/@env.TRAVIS_BUILD_ID@"
+  stage: prod
+spring:
+  application:
+    name: "@pom.artifactId@"
+
+##
+# Embedded CAS Tomcat Container
+#
+server:
+  context-path: /cas-management
+
+cas:
+  serviceRegistry:
+#    watcherEnabled: true
+#    repeatInterval: 120000
+#    startDelay: 15000
+    initFromJson: false
+    config:
+      location: classpath:/services
+    jpa:
+      driverClass: com.mysql.jdbc.Driver
+      dialect: org.hibernate.dialect.MySQL57Dialect
+      ddlAuto: validate
+#      healthQuery:
+#      url: jdbc:mysql://localhost/services
+#      user: sa
+#      password:
+#      isolateInternalQueries: false
+#      failFast: true
+#      leakThreshold: 10
+#      batchSize: 1
+#      autocommit: false
+#      idleTimeout: 5000
+#      dataSourceName:
+#      dataSourceProxy: false
+
+  jdbc:
+    showSql: true
+    genDdl: true
+  httpWebRequest:
+    cors:
+      enabled: true
+      allowCredentials: true
+      allowOrigins:
+        - "*"
+
+# Override these for non-ALA deployments
+ala:
+  skin:
+    baseUrl: https://www.ala.org.au/
+    headerFooterUrl: ${ala.skin.baseUrl}commonui-bs3/
+    favIconBaseUrl: ${ala.skin.baseUrl}wp-content/themes/ala-wordpress-theme/img/favicon/
+    bieBaseUrl: https://bie.ala.org.au/
+    bieSearchPath: search
+    userDetailsUrl: https://auth.ala.org.au/userdetails/
+    orgShortName: ALA
+    orgLongName: Atlas Of Living Australia
+    orgNameKey: ala
+    cacheDuration: 1800000 # P30m
+debug: false
