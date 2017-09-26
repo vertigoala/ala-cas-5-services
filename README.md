@@ -1,7 +1,7 @@
-CAS Services Management Overlay
+ALA CAS Services Management
 ============================
 
-Services management web application Maven overlay for CAS with externalized configuration.
+ALA CAS Services management web application.
 
 
 # Versions
