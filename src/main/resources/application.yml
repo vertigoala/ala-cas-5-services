@@ -14,6 +14,48 @@ server:
   context-path: /cas-management
 
 cas:
+  authn:
+    accept:
+      users: ''
+    attributeRepository:
+      expireInMinutes: 30
+      maximumCacheSize: 10000 #TODO TUNING
+      merger: MERGE
+# Attributes that you wish to resolve for the principal
+      defaultAttributesToRelease: id,userid,givenName,sn,firstname,lastname,email,affiliation,organisation,city,state,country,role,authority,telephone,primaryUserType,secondaryUserType
+      stubAttributes: false
+      jdbc:
+        - driverClass: com.mysql.jdbc.Driver
+          requireAllAttributes: false
+          # caseCanonicalization=NONE|LOWER|UPPER
+          caseCanonicalization: NONE
+          queryType: AND
+          singleRow: false
+          # TODO determine whether calling a stored proc is officially supported by the Apereo JDBC PersonDir
+          sql: call sp_get_user_attributes(?);
+          # username is not used because we don't use {0} in sql: above
+          username: username
+          # Used only when there is a mapping of many rows to one user
+          columnMappings:
+            key: value
+          attributes:
+            userid: userid
+            id: id
+            givenName: givenName
+            firstname: firstname
+            sn: sn
+            lastname: lastname
+            email: email
+            authority: authority
+            role: role
+            affiliation: affiliation
+            organisation: organisation
+            city: city
+            state: state
+            country: country
+            telephone: telephone
+            primaryUserType: primaryUserType
+            secondaryUserType: secondaryUserType
   serviceRegistry:
 #    watcherEnabled: true
 #    repeatInterval: 120000
