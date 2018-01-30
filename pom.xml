@@ -11,7 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>cas-management</artifactId>
     <packaging>war</packaging>
-    <version>5.2.1-1-SNAPSHOT</version>
+    <version>5.2.2-1-SNAPSHOT</version>
 
     <build>
         <resources>
@@ -165,7 +165,7 @@
     </dependencies>
 
     <properties>
-        <cas.version>5.2.1</cas.version>
+        <cas.version>5.2.2</cas.version>
         <springboot.version>1.5.8.RELEASE</springboot.version>
         <!-- app.server could be -jetty, -undertow, -tomcat, or blank if you plan to provide appserver -->
         <!-- we use blank to create a blank war and spring boot repackage to build an executable jar -->
