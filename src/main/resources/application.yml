@@ -88,8 +88,8 @@ cas:
 #      dataSourceProxy: false
 
   jdbc:
-    showSql: true
-    genDdl: true
+    showSql: false
+    genDdl: false
   httpWebRequest:
     cors:
       enabled: true
