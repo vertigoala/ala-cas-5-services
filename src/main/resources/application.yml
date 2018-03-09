@@ -29,7 +29,7 @@ cas:
       maximumCacheSize: 10000 #TODO TUNING
       merger: MERGE
 # Attributes that you wish to resolve for the principal
-      defaultAttributesToRelease: id,userid,givenName,sn,firstname,lastname,email,affiliation,organisation,city,state,country,role,authority,telephone,primaryUserType,secondaryUserType
+      defaultAttributesToRelease: id,userid,givenName,sn,firstname,lastname,email,affiliation,organisation,city,state,country,role,authority,telephone,primaryUserType,secondaryUserType,legacyPassword
       stubAttributes: false
       jdbc:
         - driverClass: com.mysql.jdbc.Driver
@@ -63,6 +63,63 @@ cas:
             telephone: telephone
             primaryUserType: primaryUserType
             secondaryUserType: secondaryUserType
+    oauth:
+      accessToken:
+        maxTimeToLiveInSeconds: "PT28800S"
+        timeToKillInSeconds: "PT7200S"
+      refreshToken:
+        timeToKillInSeconds: "P14D"
+    oidc:
+      scopes:
+        - openid
+        - profile
+        - email
+        #- address
+        #- phone
+        - offline_access
+        - ala
+        - role
+      claims: # This list is all the specified oidc claims plus ALA specific
+        - sub
+        - name
+        - preferred_username
+        - family_name
+        - given_name
+        - middle_name
+        - given_name
+        - profile
+        - picture
+        - nickname
+        - website
+        - zoneinfo
+        - locale
+        - updated_at
+        - birthdate
+        - email
+        - email_verified
+        - phone_number
+        - phone_number_verified
+        - address
+        - organisation
+        - role
+        - authority
+        - city
+        - state
+        - country
+        - primary_user_type
+        - secondary_user_type
+      userDefinedScopes:
+        ala_extended: organisation, city, state, country, primary_user_type, secondary_user_type
+        authorities: role, authority
+      claimsMap:
+        sub: userid
+        name: displayName
+        given_name: givenName
+        family_name: familyName
+        email: email
+        # ALA attributes
+        primary_user_type: primaryUserType
+        secondary_user_type: secondaryUserType
   serviceRegistry:
 #    watcherEnabled: true
 #    repeatInterval: 120000
@@ -70,6 +127,11 @@ cas:
     initFromJson: false
     config:
       location: classpath:/services
+    mongo:
+      collection: cas-service-registry
+      databaseName: cas-mongo-database
+      userId: cas
+      password: password
     jpa:
       driverClass: com.mysql.jdbc.Driver
       dialect: org.hibernate.dialect.MySQL57Dialect
