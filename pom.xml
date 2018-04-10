@@ -123,6 +123,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
             <!-- Override BOM for kotlin stdlibs -->
             <dependency>
                 <groupId>org.jetbrains.kotlin</groupId>
@@ -170,6 +175,21 @@
             <version>5.1.43</version>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+            <version>1.3.2.RELEASE</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -211,6 +231,16 @@
         <repository>
             <id>shibboleth-releases</id>
             <url>https://build.shibboleth.net/nexus/content/repositories/releases</url>
+        </repository>
+        <repository>
+            <id>ala-repo-release</id>
+            <name>ALA Internal Releases</name>
+            <url>https://nexus.ala.org.au/content/repositories/releases/</url>
+        </repository>
+        <repository>
+            <id>ala-repo-snapshot</id>
+            <name>ALA Internal Snapshots</name>
+            <url>https://nexus.ala.org.au/content/repositories/snapshots/</url>
         </repository>
     </repositories>
 </project>

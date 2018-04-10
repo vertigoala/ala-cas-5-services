@@ -6,6 +6,9 @@ info:
 spring:
   application:
     name: "@pom.artifactId@"
+  session:
+    store-type: none
+    disable-redis-config-action: false
 
 ##
 # Embedded CAS Tomcat Container
@@ -128,8 +131,8 @@ cas:
     config:
       location: classpath:/services
     mongo:
-      collection: cas-service-registry
-      databaseName: cas-mongo-database
+      collection: services
+      databaseName: cas-service-registry
       userId: cas
       password: password
     jpa:
