@@ -11,7 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>cas-management</artifactId>
     <packaging>war</packaging>
-    <version>5.2.3-1-SNAPSHOT</version>
+    <version>5.3.0-RC3-1-SNAPSHOT</version>
 
     <build>
         <resources>
@@ -150,6 +150,21 @@
                 <artifactId>spring-boot-admin-starter-client</artifactId>
                 <version>1.5.6</version>
             </dependency>
+            <dependency>
+                <groupId>org.codehaus.groovy</groupId>
+                <artifactId>groovy-jsr223</artifactId>
+                <version>${groovy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.groovy</groupId>
+                <artifactId>groovy-console</artifactId>
+                <version>${groovy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.groovy</groupId>
+                <artifactId>groovy-groovysh</artifactId>
+                <version>${groovy.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
@@ -163,6 +178,56 @@
             <groupId>org.apereo.cas</groupId>
             <artifactId>cas-server-support-mongo-service-registry</artifactId>
             <version>${cas.version}</version>
+            <exclusions>
+                <!--<exclusion>-->
+                    <!--<groupId>org.apereo.cas</groupId>-->
+                    <!--<artifactId>cas-server-core-configuration-api</artifactId>-->
+                <!--</exclusion>-->
+                <exclusion>
+                    <groupId>org.apereo.cas</groupId>
+                    <artifactId>cas-server-core-api-configuration-model</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.pac4j</groupId>
+                    <artifactId>pac4j-cas</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.pac4j</groupId>
+                    <artifactId>pac4j-config</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.pac4j</groupId>
+                    <artifactId>pac4j-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.pac4j</groupId>
+                    <artifactId>pac4j-http</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.pac4j</groupId>
+                    <artifactId>pac4j-jwt</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.pac4j</groupId>
+                    <artifactId>pac4j-oidc</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.pac4j</groupId>
+                    <artifactId>pac4j-mongo</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.pac4j</groupId>
+                    <artifactId>pac4j-oauth</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.pac4j</groupId>
+                    <artifactId>pac4j-saml</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.pac4j</groupId>
+                    <artifactId>spring-webmvc-pac4j</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!--<dependency>-->
             <!--<groupId>org.apereo.cas</groupId>-->
@@ -193,12 +258,12 @@
     </dependencies>
 
     <properties>
-        <cas.version>5.2.3</cas.version>
-        <springboot.version>1.5.8.RELEASE</springboot.version>
+        <cas.version>5.3.0-RC3</cas.version>
+        <springboot.version>1.5.9.RELEASE</springboot.version>
         <!-- app.server could be -jetty, -undertow, -tomcat, or blank if you plan to provide appserver -->
         <!-- we use blank to create a blank war and spring boot repackage to build an executable jar -->
         <app.server></app.server>
-        <kotlin.version>1.2.20</kotlin.version>
+        <kotlin.version>1.2.41</kotlin.version>
         <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
         <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
         <maven.compiler.source>1.8</maven.compiler.source>

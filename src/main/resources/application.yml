@@ -28,12 +28,13 @@ cas:
     accept:
       users: ''
     attributeRepository:
-      expireInMinutes: 30
-      maximumCacheSize: 10000 #TODO TUNING
+#      expirationTime: 30
+#      expirationUnits: MINUTES
+#      maximumCacheSize: 10000
       merger: MERGE
 # Attributes that you wish to resolve for the principal
       defaultAttributesToRelease: id,userid,givenName,sn,firstname,lastname,email,affiliation,organisation,city,state,country,role,authority,telephone,primaryUserType,secondaryUserType,legacyPassword
-      stubAttributes: false
+      stubAttributes: []
       jdbc:
         - driverClass: com.mysql.jdbc.Driver
           requireAllAttributes: false
@@ -128,8 +129,8 @@ cas:
 #    repeatInterval: 120000
 #    startDelay: 15000
     initFromJson: false
-    config:
-      location: classpath:/services
+#    json:
+#      location: classpath:/services
     mongo:
       collection: services
       databaseName: cas-service-registry
@@ -152,15 +153,15 @@ cas:
 #      dataSourceName:
 #      dataSourceProxy: false
 
-  jdbc:
-    showSql: false
-    genDdl: false
-  httpWebRequest:
-    cors:
-      enabled: true
-      allowCredentials: true
-      allowOrigins:
-        - "*"
+#  jdbc:
+#    showSql: false
+#    genDdl: false
+#  httpWebRequest:
+#    cors:
+#      enabled: true
+#      allowCredentials: true
+#      allowOrigins:
+#        - "*"
 
 # Override these for non-ALA deployments
 ala:
