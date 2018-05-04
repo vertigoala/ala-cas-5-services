@@ -101,6 +101,7 @@
                             <artifactId>cas-management-webapp</artifactId>
                             <excludes>
                                 <exclude>WEB-INF/classes/services/*.json</exclude>
+                                <exclude>WEB-INF/lib/cas-server-core-api-configuration-model-${cas.version}.jar</exclude>
                             </excludes>
                         </overlay>
                     </overlays>
