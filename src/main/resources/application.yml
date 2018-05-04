@@ -82,7 +82,7 @@ cas:
         #- phone
         - offline_access
         - ala
-        - role
+        - roles
       claims: # This list is all the specified oidc claims plus ALA specific
         - sub
         - name
@@ -114,7 +114,7 @@ cas:
         - secondary_user_type
       userDefinedScopes:
         ala: organisation, city, state, country, primary_user_type, secondary_user_type
-        role: role, authority
+        roles: role, authority
       claimsMap:
         sub: userid
         name: displayName
