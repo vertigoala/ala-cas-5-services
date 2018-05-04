@@ -113,8 +113,8 @@ cas:
         - primary_user_type
         - secondary_user_type
       userDefinedScopes:
-        ala_extended: organisation, city, state, country, primary_user_type, secondary_user_type
-        authorities: role, authority
+        ala: organisation, city, state, country, primary_user_type, secondary_user_type
+        role: role, authority
       claimsMap:
         sub: userid
         name: displayName
