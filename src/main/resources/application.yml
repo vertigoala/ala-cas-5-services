@@ -15,6 +15,7 @@ spring:
 #
 server:
   context-path: /cas-management
+  use-forward-headers: true
   tomcat:
     remote_ip_header: x-forwarded-for
     port-header: 'X-Forwarded-Port'
@@ -136,32 +137,6 @@ cas:
       databaseName: cas-service-registry
       userId: cas
       password: password
-    jpa:
-      driverClass: com.mysql.jdbc.Driver
-      dialect: org.hibernate.dialect.MySQL57Dialect
-      ddlAuto: validate
-#      healthQuery:
-#      url: jdbc:mysql://localhost/services
-#      user: sa
-#      password:
-#      isolateInternalQueries: false
-#      failFast: true
-#      leakThreshold: 10
-#      batchSize: 1
-#      autocommit: false
-#      idleTimeout: 5000
-#      dataSourceName:
-#      dataSourceProxy: false
-
-#  jdbc:
-#    showSql: false
-#    genDdl: false
-#  httpWebRequest:
-#    cors:
-#      enabled: true
-#      allowCredentials: true
-#      allowOrigins:
-#        - "*"
 
 # Override these for non-ALA deployments
 ala:
