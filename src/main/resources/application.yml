@@ -138,6 +138,9 @@ cas:
       userId: cas
       password: password
 
+mgmt:
+  enable-version-control: false
+
 # Override these for non-ALA deployments
 ala:
   skin:
