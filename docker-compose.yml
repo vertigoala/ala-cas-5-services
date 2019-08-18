@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  cas-management:
+    build:
+      context: .
+    image: vertigoala/cas5-management
+    container_name: cas-management
+    ports:
+      - 8070:8070
+    volumes:
+      - ./config/:/data/cas/config/
+    #depends_on: 
+    #  - mysqldbcas
